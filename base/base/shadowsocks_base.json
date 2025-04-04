@@ -7,9 +7,7 @@
     "enabled": false,
     "bypass": true,
     "android_list": [
-      "com.eg.android.AlipayGphone",
-      "com.wudaokou.hippo",
-      "com.zhihu.android"
+      "com.eg.android.AlipayGphone"
     ]
   },
   "udpdns": false
