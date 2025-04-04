@@ -1,6 +1,5 @@
 FROM alpine:3.16 AS builder
-LABEL maintainer="tindy.it@gmail.com"
-ARG THREADS="4"
+ARG THREADS="6"
 ARG SHA=""
 
 # build minimized
@@ -35,7 +34,7 @@ RUN set -xe && \
     cmake -DCMAKE_CXX_STANDARD=11 . && \
     make install -j $THREADS && \
     cd .. && \
-    git clone https://github.com/tindy2013/subconverter --depth=1 && \
+    git clone https://github.com/OliverBancroft/subconverter --depth=1 && \
     cd subconverter && \
     [ -n "$SHA" ] && sed -i 's/\(v[0-9]\.[0-9]\.[0-9]\)/\1-'"$SHA"'/' src/version.h;\
     python3 -m ensurepip && \
