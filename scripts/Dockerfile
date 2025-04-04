@@ -34,7 +34,7 @@ RUN set -xe && \
     cmake -DCMAKE_CXX_STANDARD=11 . && \
     make install -j $THREADS && \
     cd .. && \
-    git clone https://github.com/OliverBancroft/subconverter --depth=1 && \
+    git clone https://github.com/OliverBancroft/subconverter.git && \
     cd subconverter && \
     [ -n "$SHA" ] && sed -i 's/\(v[0-9]\.[0-9]\.[0-9]\)/\1-'"$SHA"'/' src/version.h;\
     python3 -m ensurepip && \
@@ -45,7 +45,6 @@ RUN set -xe && \
 
 # build final image
 FROM alpine:3.16
-LABEL maintainer="tindy.it@gmail.com"
 
 RUN apk add --no-cache --virtual subconverter-deps pcre2 libcurl yaml-cpp
 
